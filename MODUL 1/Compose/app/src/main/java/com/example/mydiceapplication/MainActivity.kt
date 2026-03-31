@@ -127,7 +127,7 @@ fun DiceRollerApp(modifier: Modifier = Modifier){
                             .padding(10.dp)
                     ){
                         Text(
-                            text = "Selamat, anda dapat dadu double",
+                            text = "Selamat, anda dapat dadu double!",
                             color = Color.Black
                         )
                     }
