@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Modul2ComposeTheme {
-                MyApp()
+                MyApp(Modifier, { TipContent(Modifier) })
             }
         }
     }
@@ -26,43 +26,41 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun MyApp(modifier: Modifier = Modifier){
+fun MyApp(
+    modifier: Modifier = Modifier,
+    tipContent: @Composable (PaddingValues) -> Unit
+) {
     TipScreen(
-        modifier = modifier,
-        topBar = { Greeting("hi") },
-        bottomBar = {Greeting("yo")},
-        content = { padding -> Greeting("he", modifier = Modifier.padding(padding))}
+        modifier,
+        tipContent,
     )
 }
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-
 
 @Composable
 fun TipScreen(
     modifier: Modifier = Modifier,
-    topBar: @Composable () -> Unit = {},
-    bottomBar: @Composable () -> Unit = {},
-    content: @Composable (PaddingValues) -> Unit
+    content: @Composable (PaddingValues) -> Unit,
 ) {
     Scaffold(
         modifier =  modifier,
-        topBar = topBar,
-        bottomBar = bottomBar
     ) { innerPadding ->
         content(innerPadding)
+    }
+}
+
+@Composable
+fun TipContent(
+    modifier: Modifier = Modifier,
+) {
+    Column{
+        Text("Calculate Tip")
     }
 }
 
 @Preview
 @Composable
 fun MyAppPreview() {
-Modul2ComposeTheme { MyApp() }
+    Modul2ComposeTheme {
+        MyApp(Modifier, { TipContent(Modifier) })
+    }
 }
