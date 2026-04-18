@@ -19,6 +19,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
@@ -88,13 +89,14 @@ fun TipContent(modifier: Modifier = Modifier) {
 
         Text(
             modifier = Modifier
-                .fillMaxWidth(0.67f)
+                .fillMaxWidth(0.9f)
                 .padding(top = 20.dp, bottom = 20.dp),
             textAlign = TextAlign.Start,
             text = "Calculate Tip"
         )
 
         TextField(
+            modifier = Modifier.fillMaxWidth(0.9f),
             value = amount,
             onValueChange = { amount = it },
             leadingIcon = {
@@ -112,10 +114,8 @@ fun TipContent(modifier: Modifier = Modifier) {
             onOptionSelected = { newPercentage -> selectedOption = newPercentage }
         )
 
-
-
         Row(
-            modifier = Modifier.fillMaxWidth(0.67f)
+            modifier = Modifier.fillMaxWidth(0.9f)
                 .padding(bottom = 20.dp, top = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
@@ -133,7 +133,8 @@ fun TipContent(modifier: Modifier = Modifier) {
         if (checked) tipAmount = kotlin.math.ceil(tipAmount)
 
         val formattedTip = String.format("%.2f", tipAmount)
-        Text(text = "Tip Amount: $$formattedTip", fontSize = 33.sp, fontWeight = FontWeight.Bold)
+        Text(text = "Tip Amount: $$formattedTip", fontSize = 40.sp, fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.displaySmall)
     }
 }
 
@@ -143,17 +144,18 @@ fun TipPercentageDropdown(currentSelection: String, onOptionSelected: (String) -
     var expanded by remember { mutableStateOf(false) }
     val tipPercentage = listOf("15%", "18%", "20%")
 
-
     ExposedDropdownMenuBox(
         expanded = expanded,
         onExpandedChange = { expanded = !expanded },
         modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)
+            .fillMaxWidth(0.9f)
     ) {
         TextField(
             modifier = Modifier.menuAnchor(
                 type = MenuAnchorType.PrimaryNotEditable,
                 enabled = true
-            ),
+            )
+                .fillMaxWidth(),
 
             label = { Text("Tip Percentage") },
             leadingIcon = { Text("%") },

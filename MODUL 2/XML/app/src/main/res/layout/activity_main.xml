@@ -13,10 +13,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Calculate Tip"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -25,8 +22,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:hint="Bill Amount"
-        app:startIconDrawable="@drawable/ic_money"
-        >
+        app:startIconDrawable="@drawable/ic_money">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/billInputAmount"
@@ -91,8 +87,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         android:layout_weight="0"
-        android:gravity="center"
-        android:text="Tip Amount: $"
+        android:gravity="left"
+        android:text="Tip Amount: $0.00"
         android:textSize="45sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
