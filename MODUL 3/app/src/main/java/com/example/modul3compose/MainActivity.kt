@@ -1,5 +1,6 @@
 package com.example.modul3compose
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -25,6 +26,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -36,16 +39,17 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -55,6 +59,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.modul3compose.ui.theme.Modul3ComposeTheme
+import androidx.core.net.toUri
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,12 +79,12 @@ fun MyApp(){
     NavHost(navController, startDestination = "main") {
         composable("main") {
             MainScreen(navController) {
-                MainContent(paddingValues = it)
+                MainContent(paddingValues = it, navController)
             }
         }
-        composable ("setting"){
-            SettingScreen{
-                SettingContent()
+        composable ("details"){
+            DetailsScreen {
+                DetailsContent()
             }
         }
     }
@@ -109,7 +114,7 @@ fun MainScreen(
 }
 
 @Composable
-fun SettingScreen(
+fun DetailsScreen(
     content: @Composable (PaddingValues) -> Unit
 ){
     Scaffold(
@@ -120,7 +125,7 @@ fun SettingScreen(
 }
 
 @Composable
-fun MainContent(paddingValues: PaddingValues){
+fun MainContent(paddingValues: PaddingValues, navController: NavHostController){
     val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     val comicsCarousel = listOf(
@@ -158,13 +163,13 @@ fun MainContent(paddingValues: PaddingValues){
         }
 
         items(comicsList) {item ->
-            ComicList(item, paddingValues, isLandscape)
+            ComicList(item, isLandscape, navController)
         }
     }
 }
 
 @Composable
-fun SettingContent(){
+fun DetailsContent(){
 
 }
 
@@ -217,7 +222,14 @@ fun RecommendationCarousel(items: List<Comic>, paddingValues: PaddingValues, isL
                             color = Color.White,
                             modifier = Modifier.padding(vertical = 10.dp, horizontal = 20.dp))
 
-                        ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize)
+                        ComicCard(
+                            item,
+                            titleFontSize,
+                            descFontSize,
+                            descMaxLine,
+                            authorFontSize,
+                            genreFontSize,
+                        )
                     }
                 }
             }
@@ -226,20 +238,22 @@ fun RecommendationCarousel(items: List<Comic>, paddingValues: PaddingValues, isL
 }
 
 @Composable
-fun ComicList(item: Comic, paddingValues: PaddingValues, isLandscape: Boolean){
+fun ComicList(item: Comic, isLandscape: Boolean, navController: NavHostController){
     val descFontSize =  if (isLandscape) 24.sp else 15.sp
-    val descMaxLine = if (isLandscape) 2 else 5
+    val descMaxLine = if (isLandscape) 3 else 3
 
     val titleFontSize = if (isLandscape) 32.sp else 20.sp
     val authorFontSize = if (isLandscape) 24.sp else 20.sp
     val genreFontSize = if (isLandscape) 20.sp else 15.sp
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(250.dp)
-            .padding(paddingValues),
-                    RoundedCornerShape(0.dp)
+            .height(200.dp)
+            .padding(top = 10.dp, bottom = 20.dp)
     ) {
+        val context = LocalContext.current
+
         Box(modifier = Modifier.fillMaxSize()){
             Image(painter = painterResource(item.backgroundImage),
                 modifier = Modifier.fillMaxSize(),
@@ -258,14 +272,38 @@ fun ComicList(item: Comic, paddingValues: PaddingValues, isLandscape: Boolean){
                 )
             )
 
-            ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize)
+            Column(modifier = Modifier.fillMaxSize()) {
+                Row(modifier = Modifier.fillMaxSize().weight(1f)) { ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize) }
+
+                Row(modifier = Modifier.background(Color.Black).fillMaxWidth().weight(0.3f).padding(top = 10.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
+                    Button(onClick = { val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
+                        context.startActivity(intent)
+                    }, modifier = Modifier.fillMaxHeight().weight(1f)) {
+                        Image(painter = painterResource(R.drawable.mangadex_logo), contentDescription = "mangedex_logo", contentScale = ContentScale.Fit)
+                        Text(text = "Mangadex", modifier = Modifier.padding(start = 10.dp))
+                    }
+                    Button(onClick = { navController.navigate("details")
+                    }, modifier = Modifier.fillMaxHeight().weight(1f)) {
+                        Icon(Icons.Default.Menu, contentDescription = "detail_icon")
+                        Text(text = "Detail", modifier = Modifier.padding(start = 5.dp))
+                    }
+                }
+            }
         }
     }
 }
 
 @Composable
-fun ComicCard(item: Comic, titleFontSize: TextUnit, descFontSize: TextUnit, descMaxLine: Int, authorFontSize: TextUnit, genreFontSize: TextUnit){
-    Row(modifier = Modifier.fillMaxSize()) {
+fun ComicCard(
+    item: Comic,
+    titleFontSize: TextUnit,
+    descFontSize: TextUnit,
+    descMaxLine: Int,
+    authorFontSize: TextUnit,
+    genreFontSize: TextUnit
+){
+    Row(modifier = Modifier
+        .fillMaxWidth()) {
         Image(painter = painterResource(item.coverImage),
             modifier = Modifier
                 .fillMaxWidth(0.4f)
