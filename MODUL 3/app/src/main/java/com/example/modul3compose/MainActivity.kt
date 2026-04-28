@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -39,8 +40,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -139,13 +138,13 @@ fun MainContent(paddingValues: PaddingValues, navController: NavHostController){
         )
 
     val comicsList = listOf(
-        Comic("The Moon on a Rainy Night", R.drawable.cv_cr_1, R.drawable.bg_cr_1, "https://mangadex.org/title/8b34f37a-0181-4f0b-8ce3-01217e9a602c/qing-qifu-wo-ba-eyi-xiaojie", "Yvonne Smollett is reincarnated into an otome game—not as the heroine, but as the villainess. In the original story, her role is to bully the heroine and push her toward various romance routes… before eventually meeting a bad end herself.", "Romance, Comedy, Fantasy, Isekai", "Yuin"),
-        Comic("Release That Witch", R.drawable.cv_cr_2, R.drawable.bg_cr_2, "https://genshin-impact.fandom.com/wiki/Eula", "lorem", "ipsum", "dolor"),
-        Comic("Legend of The Northern Blade", R.drawable.cv_cr_3, R.drawable.bg_cr_3, "https://genshin-impact.fandom.com/wiki/Eula", "lorem", "ipsum", "dolor"),
-        Comic("Return of the Mount Hua Sect", R.drawable.cv_cr_4, R.drawable.bg_cr_4, "https://genshin-impact.fandom.com/wiki/Eula", "lorem", "ipsum", "dolor"),
-        Comic("The One Within the Villainess", R.drawable.cv_cr_5, R.drawable.bg_cr_5, "https://genshin-impact.fandom.com/wiki/Eula", "lorem", "ipsum", "dolor"),
-        Comic("The King's Avatar", R.drawable.cv_cr_6, R.drawable.bg_cr_6, "https://genshin-impact.fandom.com/wiki/Eula", "lorem", "ipsum", "dolor"),
-        Comic("I Made Friends with the Second Prettiest Girl in My Class", R.drawable.cv_cr_7, R.drawable.bg_cr_7, "https://genshin-impact.fandom.com/wiki/Eula", "lorem", "ipsum", "dolor"),
+        Comic("The Moon on a Rainy Night", R.drawable.cv_li_1, R.drawable.bg_li_1, "https://mangadex.org/title/c8a0426d-539b-4f6a-9537-fbccf4962529/amayo-no-tsuki", "One rainy night, Saki is rushing to a piano lesson when she crashes into a beautiful, long-haired girl, dropping her sheet music in the process. Saki stutters an apology, but the girl simply hands back her sheet music and leaves without a word. Saki begins her first day of high school the following morning, only to find the stranger from the night before sitting at the desk next to hers. She learns that the girl's name is Kanon and that she is not quite completely deaf, but very hard of hearing. Though Kanon needs to be close to people to read their lips, she tends to push people away with her icy demeanor. Through one kind gesture, Saki slowly begins breaking down the walls around Kanon, even as she feels something new blossoming within her.", "", ""),
+        Comic("Movies Are Real", R.drawable.cv_li_2, R.drawable.bg_li_2, "https://mangadex.org/title/ff2f35ff-2641-4a1b-8477-df933efd4eba/movies-are-real", "While working as a small supporting actor in a movie, Ki Man Sung has nothing else going for him. However, that was when ,through mysterious circumstance, the movie set had become reality during filming. With the sound of the director’s cut, during that short take, he’s not an actor but actually thrown into the events occurring, showing the pain and emotions he faces in that moment. He can only come back if he creates that perfect take…!", "", ""),
+        Comic("Legend of The Northern Blade", R.drawable.cv_li_3, R.drawable.bg_li_3, "https://mangadex.org/title/9ed16bc9-f570-4e71-8dda-aebc098b683b/the-legend-of-the-northern-blade", "When the world was plunged into darkness by the ‘Silent Night’, Martial Artists from all over the place gathered to form the ‘Northern Heavenly Sect’. With overwhelming strength from the Northern Heavenly Sect, the Silent Night was pushed away and the people began to enjoy peace once more. However, as time passed the martial artists from the mainlands began to conspire against the ‘Northern Heavenly Sect’, and eventually caused the death of the Fourth Generation Sect Leader, Jin Kwan-Ho, destroying the sect with it. As everyone left the sect, Jin Kwan-Ho’s only son, Jin Mu-Won was left behind. Mu-Won has never learned anything about martial arts, but he eventually finds the Martial Techniques secretly left behind by his father and begins to acquire the martial arts of the Northern Heavenly Sect. Then one day, a mysterious girl appears before Mu-Won…!!", "", ""),
+        Comic("Return of the Mount Hua Sect", R.drawable.cv_li_4, R.drawable.bg_li_4, "https://mangadex.org/title/f0f62b75-5989-4f32-9b59-ab56abe35fc1/return-of-the-blossoming-blade", "Chung Myung, The 13th Disciple of the Mount Hua Sect, One of the 3 Great Swordsmen, Plum Blossom Sword Saint, defeated Chun Ma, who has brought destruction and disarray onto the world. After the battle, he breathes his last breath on top of the headquarter mountain of the Heavenly Demon Sect. He is reborn after 100 years in the body of a child. ……What? The Mount Hua Sect has fallen? What kind of nonsense is that!?", "", ""),
+        Comic("The One Within the Villainess", R.drawable.cv_li_5, R.drawable.bg_li_5, "https://mangadex.org/title/6df29d13-2dab-4ca6-a0b5-74070abf3e1d/akuyaku-reijou-no-naka-no-hito", "In order to clear the name of 'Emi', a girl who had reincarnated as Remilia, the villainess of an otome game, the real Remilia who had been watching all along inside awakens.", "", ""),
+        Comic("The King's Avatar", R.drawable.cv_li_6, R.drawable.bg_li_6, "https://mangadex.org/title/1930d635-b170-417f-b8a8-f84b881bcc7d/quanzhi-gaoshou", "No one could ever come close to Ye Qiu’s skills in Glory, a popular MMO that took the world by storm. However, his professional team replaced him as captain and seized his account. Ye Qiu was left to start anew at an internet café as a network manager. When the new 10th server launched, he dove back in, armed with a decade of experience and an unfinished custom weapon. His path to redemption, filled with strategy and memories, marks his thrilling return to the top.", "", ""),
+        Comic("I Made Friends with the Second Prettiest Girl in My Class", R.drawable.cv_li_7, R.drawable.bg_li_7, "https://mangadex.org/title/8ef11280-30bc-434b-bf61-c61e092905ac/class-de-2-banme-ni-kawaii-onnanoko-to-tomodachi-ni-natta", "I, Maki Maehara, am a class loner. My first friend ever is Umi Asanagi. She is always at the center of the social circle, the girl the guys secretly whisper is the \"second cutest in the class.\" I thought a background character like me lived in a completely different world from her, but it turns out she’s a huge fan of B-movies!? After becoming friends through a twist of fate, Asanagi secretly comes to hang out at my house every Friday after school. Movies, games, manga, we have a great time together sharing the exact same hobbies. \"Hey, Maehara, look! I'll let you sit right here as a special treat.\" \"That's my bed to begin with...\" \"Just for today, it's my bed. Come on, get over here.\" Aren't you a little too close, Asanagi?", "", ""),
     )
 
     LazyColumn(
@@ -246,10 +245,16 @@ fun ComicList(item: Comic, isLandscape: Boolean, navController: NavHostControlle
     val authorFontSize = if (isLandscape) 24.sp else 20.sp
     val genreFontSize = if (isLandscape) 20.sp else 15.sp
 
+    val buttonFontSize = if (isLandscape) 30.sp else 20.sp
+    val buttonPadding = if (isLandscape) 20.dp else 10.dp
+    val buttonIconSize = if (isLandscape) 32.dp else 24.dp
+    val cardHeight = if (isLandscape) 280.dp else 200.dp
+
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(cardHeight)
             .padding(top = 10.dp, bottom = 20.dp)
     ) {
         val context = LocalContext.current
@@ -275,18 +280,18 @@ fun ComicList(item: Comic, isLandscape: Boolean, navController: NavHostControlle
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(modifier = Modifier.fillMaxSize().weight(1f)) { ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize) }
 
-                Row(modifier = Modifier.background(Color.Black).fillMaxWidth().weight(0.4f).padding(top = 10.dp), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+                Row(modifier = Modifier.background(Color.Black).fillMaxWidth().weight(0.4f).padding(top = buttonPadding), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                     Button(onClick = { val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
                         context.startActivity(intent)
                     }, modifier = Modifier.fillMaxSize().weight(1f).padding(horizontal = 10.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))) {
-                        Image(painter = painterResource(R.drawable.mangadex_logo), contentDescription = "mangedex_logo", contentScale = ContentScale.Fit)
-                        Text(text = "Mangadex", modifier = Modifier.padding(start = 10.dp))
+                        Image(painter = painterResource(R.drawable.mangadex_logo), contentDescription = "mangedex_logo", contentScale = ContentScale.Fit, modifier = Modifier.size(buttonIconSize))
+                        Text(text = "Mangadex", modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
                     }
 
                     Button(onClick = { navController.navigate("details")
                     }, modifier = Modifier.fillMaxSize().weight(1f).padding(horizontal = 10.dp)) {
-                        Icon(Icons.Default.Menu, contentDescription = "detail_icon")
-                        Text(text = "Detail", modifier = Modifier.padding(start = 10.dp))
+                        Icon(Icons.Default.Menu, contentDescription = "detail_icon", modifier = Modifier.size(buttonIconSize))
+                        Text(text = "Detail", modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
                     }
                 }
             }
