@@ -275,17 +275,18 @@ fun ComicList(item: Comic, isLandscape: Boolean, navController: NavHostControlle
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(modifier = Modifier.fillMaxSize().weight(1f)) { ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize) }
 
-                Row(modifier = Modifier.background(Color.Black).fillMaxWidth().weight(0.3f).padding(top = 10.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
+                Row(modifier = Modifier.background(Color.Black).fillMaxWidth().weight(0.4f).padding(top = 10.dp), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                     Button(onClick = { val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
                         context.startActivity(intent)
-                    }, modifier = Modifier.fillMaxHeight().weight(1f)) {
+                    }, modifier = Modifier.fillMaxSize().weight(1f).padding(horizontal = 10.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))) {
                         Image(painter = painterResource(R.drawable.mangadex_logo), contentDescription = "mangedex_logo", contentScale = ContentScale.Fit)
                         Text(text = "Mangadex", modifier = Modifier.padding(start = 10.dp))
                     }
+
                     Button(onClick = { navController.navigate("details")
-                    }, modifier = Modifier.fillMaxHeight().weight(1f)) {
+                    }, modifier = Modifier.fillMaxSize().weight(1f).padding(horizontal = 10.dp)) {
                         Icon(Icons.Default.Menu, contentDescription = "detail_icon")
-                        Text(text = "Detail", modifier = Modifier.padding(start = 5.dp))
+                        Text(text = "Detail", modifier = Modifier.padding(start = 10.dp))
                     }
                 }
             }
