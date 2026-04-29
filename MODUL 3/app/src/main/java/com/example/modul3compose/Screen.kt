@@ -27,11 +27,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -54,10 +54,16 @@ fun MainScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = {Text(text = "MyComicList", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)},
+                title = {
+                    Text(stringResource(
+                        R.string.app_title),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold)},
                 actions = {
                     IconButton(onClick = {navController.navigate("settings") }) {
-                        Icon(Icons.Default.Menu, contentDescription = "settings")
+                        Icon(
+                            Icons.Default.Menu,
+                            contentDescription = stringResource(R.string.cd_settings_menu))
                     }
                 }
             )
@@ -70,14 +76,20 @@ fun MainScreen(
                 .padding(innerPadding)
         ) {
             item {
-                RecommendationCarousel(carouselComics, isLandscape, navController, viewModel)
+                RecommendationCarousel(
+                    carouselComics,
+                    isLandscape,
+                    navController,
+                    viewModel)
             }
 
-            item {Text(text = "Top Comic",
+            item {
+                Text(
+                text = stringResource(R.string.label_top_comic),
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 25.sp,
                 modifier = Modifier.padding(top = 30.dp, bottom = 5.dp, start = 20.dp)
-            )
+                )
             }
 
             items(listComics) {item ->
@@ -88,7 +100,10 @@ fun MainScreen(
 }
 
 @Composable
-fun DetailsScreen(viewModel: ComicViewModel, navController: NavHostController, isLandscape: Boolean){
+fun DetailsScreen(
+    viewModel: ComicViewModel,
+    navController: NavHostController,
+    isLandscape: Boolean){
     val selectedComic by viewModel.selectedComic.collectAsStateWithLifecycle()
     val descFontSize =  if (isLandscape) 24.sp else 20.sp
     val descMaxLine = if (isLandscape) 3 else 15
@@ -114,7 +129,7 @@ fun DetailsScreen(viewModel: ComicViewModel, navController: NavHostController, i
                 Image(painter = painterResource(comic.backgroundImage),
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop,
-                    contentDescription = "carousel_bg_image")
+                    contentDescription = stringResource(R.string.cd_bg_image))
 
                 Box(modifier = Modifier
                     .fillMaxSize()
@@ -136,7 +151,7 @@ fun DetailsScreen(viewModel: ComicViewModel, navController: NavHostController, i
                     Button(onClick = {
                         navController.popBackStack()
                     }, modifier = Modifier.fillMaxSize().padding(20.dp), shape = RoundedCornerShape(10.dp)) {
-                        Text(text = "Return", modifier = Modifier.padding(end = 10.dp), fontSize = buttonFontSize, textAlign = TextAlign.Center)
+                        Text(text = stringResource(R.string.btn_return), modifier = Modifier.padding(end = 10.dp), fontSize = buttonFontSize, textAlign = TextAlign.Center)
                     }
                 }
             }
@@ -152,25 +167,37 @@ fun SettingsScreen(navController: NavHostController) {
 
     val newLang = if (currentLang == "en") "id" else "en"
 
-    Scaffold(
-        modifier = Modifier.fillMaxSize()
+    Scaffold(modifier = Modifier.fillMaxSize()
     ) {innerPadding ->
 
-        Column(modifier = Modifier.padding(innerPadding).fillMaxSize(), Arrangement.SpaceEvenly, Alignment.CenterHorizontally) {
-            Text(text = "Change Language?", style = MaterialTheme.typography.titleLarge, modifier = Modifier.padding(bottom = 20.dp))
+        Column(modifier = Modifier
+                .padding(innerPadding)
+                .fillMaxSize(),
+            Arrangement.SpaceEvenly,
+            Alignment.CenterHorizontally) {
+            Text(text = stringResource(R.string.label_change_language),
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 20.dp))
 
             Button( onClick = {
                 AppCompatDelegate.setApplicationLocales(
                     LocaleListCompat.forLanguageTags(newLang)
                 )
-            }, modifier = Modifier.fillMaxHeight(0.5f).fillMaxWidth(), shape = RoundedCornerShape(10.dp)) {
-                Text(text = "Switch Language", modifier = Modifier.padding(end = 10.dp), textAlign = TextAlign.Center)
+            }, modifier = Modifier.fillMaxHeight(0.5f)
+                .fillMaxWidth(),
+                shape = RoundedCornerShape(10.dp)) {
+                Text(text = stringResource(R.string.btn_switch_language),
+                    modifier = Modifier.padding(end = 10.dp),
+                    textAlign = TextAlign.Center)
             }
 
             Button(onClick = {
                 navController.popBackStack()
-            }, modifier = Modifier.fillMaxHeight(0.5f).fillMaxWidth(), shape = RoundedCornerShape(10.dp)) {
-                Text(text = "Return", modifier = Modifier.padding(end = 10.dp), textAlign = TextAlign.Center)
+            }, modifier = Modifier.fillMaxHeight(0.5f)
+                .fillMaxWidth(), shape = RoundedCornerShape(10.dp)) {
+                Text(text = stringResource(R.string.btn_return),
+                    modifier = Modifier.padding(end = 10.dp),
+                    textAlign = TextAlign.Center)
             }
 
         }

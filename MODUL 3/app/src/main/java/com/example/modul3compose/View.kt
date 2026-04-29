@@ -34,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -88,7 +89,7 @@ fun RecommendationCarousel(
                     Image(painter = painterResource(item.backgroundImage),
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop,
-                        contentDescription = "carousel_bg_image")
+                        contentDescription = stringResource(R.string.cd_carousel_bg_image))
 
                     Box(modifier = Modifier
                         .fillMaxSize()
@@ -103,7 +104,7 @@ fun RecommendationCarousel(
                     )
 
                     Column(modifier = Modifier.fillMaxSize()) {
-                        Text(text = "My Recommendation",
+                        Text(text = stringResource(R.string.label_recommendation),
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White,
@@ -169,7 +170,7 @@ fun ComicList(
             Image(painter = painterResource(item.backgroundImage),
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,
-                contentDescription = "carousel_bg_image")
+                contentDescription = stringResource(R.string.cd_carousel_bg_image))
 
             Box(modifier = Modifier
                 .fillMaxSize()
@@ -203,16 +204,16 @@ fun ComicList(
                     Button(onClick = { val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
                         context.startActivity(intent)
                     }, modifier = Modifier.fillMaxSize().weight(1f).padding(horizontal = 10.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))) {
-                        Image(painter = painterResource(R.drawable.mangadex_logo), contentDescription = "mangedex_logo", contentScale = ContentScale.Fit, modifier = Modifier.size(buttonIconSize))
-                        Text(text = "Mangadex", modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
+                        Image(painter = painterResource(R.drawable.mangadex_logo), contentDescription = stringResource(R.string.cd_mangadex_logo), contentScale = ContentScale.Fit, modifier = Modifier.size(buttonIconSize))
+                        Text(text = stringResource(R.string.btn_mangadex), modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
                     }
 
                     Button(onClick = {
                         navController.navigate("details")
                         viewModel.selectComic(item)
                     }, modifier = Modifier.fillMaxSize().weight(1f).padding(horizontal = 10.dp)) {
-                        Icon(Icons.Default.Menu, contentDescription = "detail_icon", modifier = Modifier.size(buttonIconSize))
-                        Text(text = "Detail", modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
+                        Icon(Icons.Default.Menu, contentDescription = stringResource(R.string.cd_detail_icon), modifier = Modifier.size(buttonIconSize))
+                        Text(text = stringResource(R.string.btn_detail), modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
                     }
                 }
             }
@@ -248,7 +249,8 @@ fun ComicCard(
                 .padding(start = 20.dp)
                 .clip(RoundedCornerShape(10)),
             contentScale = ContentScale.Crop,
-            contentDescription = "carousel_cover_image")
+            contentDescription = stringResource(R.string.cd_cover_image)
+        )
 
         Column(modifier = Modifier
             .fillMaxHeight()

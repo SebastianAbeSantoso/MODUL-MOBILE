@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Modul 3 Compose</string>
+    <string name="app_title">MyComicList</string>
+    <string name="cd_settings_menu">Settings</string>
+    <string name="label_top_comic">Top Comic</string>
+    <string name="cd_bg_image">Background image</string>
+    <string name="btn_return">Return</string>
+    <string name="label_change_language">Change Language?</string>
+    <string name="btn_switch_language">Switch Language</string>
+
+    <string name="cd_carousel_bg_image">Carousel background image</string>
+    <string name="label_recommendation">My Recommendation</string>
+    <string name="cd_mangadex_logo">MangaDex logo</string>
+    <string name="btn_mangadex">Mangadex</string>
+    <string name="cd_detail_icon">Detail icon</string>
+    <string name="btn_detail">Detail</string>
+    <string name="cd_cover_image">Comic cover image</string>
+
+    <string name="genre_romance">Romance</string>
+    <string name="genre_comedy">Comedy</string>
+    <string name="genre_action">Action</string>
+    <string name="genre_adventure">Adventure</string>
+    <string name="genre_transmigration">Transmigration</string>
+    <string name="genre_wuxia">Wuxia</string>
+    <string name="genre_reincarnation">Reincarnation</string>
+    <string name="genre_time_travel">Time Travel</string>
+    <string name="genre_historical">Historical</string>
+    <string name="genre_psychological">Psychological</string>
+    <string name="genre_tragedy">Tragedy</string>
+
+
 </resources>
