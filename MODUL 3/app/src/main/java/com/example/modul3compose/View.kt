@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import androidx.navigation.NavHostController
+import org.w3c.dom.Text
 
 @Composable
 fun RecommendationCarousel(
@@ -56,10 +57,18 @@ fun RecommendationCarousel(
     val descMaxLine = if (isLandscape) 3 else 5
 
     val titleFontSize = if (isLandscape) 32.sp else 20.sp
-    val authorFontSize = if (isLandscape) 24.sp else 20.sp
-    val genreFontSize = if (isLandscape) 20.sp else 15.sp
+    val titleMaxLine = 1
+    val titleLineHeight = 10.sp
 
-    val cardHeight = if (isLandscape) 400.dp else 300.dp
+    val authorFontSize = if (isLandscape) 24.sp else 20.sp
+    val authorMaxLine = 1
+
+    val genreFontSize = if (isLandscape) 20.sp else 15.sp
+    val genreMaxLine = 1
+
+
+
+    val cardHeight = if (isLandscape) 280.dp else 300.dp
 
     LazyRow(
         modifier = Modifier
@@ -103,12 +112,16 @@ fun RecommendationCarousel(
                         ComicCard(
                             item,
                             titleFontSize,
+                            titleMaxLine,
+                            titleLineHeight,
                             descFontSize,
                             descMaxLine,
                             authorFontSize,
+                            authorMaxLine,
                             genreFontSize,
+                            genreMaxLine,
                             navController,
-                            viewModel
+                            viewModel,
                         )
                     }
                 }
@@ -125,11 +138,18 @@ fun ComicList(
     viewModel: ComicViewModel
 ){
     val descFontSize =  if (isLandscape) 24.sp else 15.sp
-    val descMaxLine = if (isLandscape) 3 else 3
+    val descMaxLine = if (isLandscape) 2 else 3
 
     val titleFontSize = if (isLandscape) 32.sp else 20.sp
+    val titleMaxLine = 1
+    val titleLineHeight = 10.sp
+
     val authorFontSize = if (isLandscape) 24.sp else 20.sp
+    val authorMaxLine = 1
+
     val genreFontSize = if (isLandscape) 20.sp else 15.sp
+    val genreMaxLine = 1
+
 
     val buttonFontSize = if (isLandscape) 30.sp else 20.sp
     val buttonPadding = if (isLandscape) 20.dp else 10.dp
@@ -164,7 +184,20 @@ fun ComicList(
             )
 
             Column(modifier = Modifier.fillMaxSize()) {
-                Row(modifier = Modifier.fillMaxSize().weight(1f)) { ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize, navController, viewModel) }
+                Row(modifier = Modifier.fillMaxSize().weight(1f)) { ComicCard(
+                    item,
+                    titleFontSize,
+                    titleMaxLine,
+                    titleLineHeight,
+                    descFontSize,
+                    descMaxLine,
+                    authorFontSize,
+                    authorMaxLine,
+                    genreFontSize,
+                    genreMaxLine,
+                    navController,
+                    viewModel,
+                    ) }
 
                 Row(modifier = Modifier.background(Color.Black).fillMaxWidth().weight(0.4f).padding(top = buttonPadding), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                     Button(onClick = { val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
@@ -187,18 +220,21 @@ fun ComicList(
     }
 }
 
-
 @Composable
 fun ComicCard(
     item: Comic,
     titleFontSize: TextUnit,
+    titleMaxLine: Int,
+    titleLineHeight: TextUnit,
     descFontSize: TextUnit,
     descMaxLine: Int,
     authorFontSize: TextUnit,
+    authorMaxLine: Int,
     genreFontSize: TextUnit,
+    genreMaxLine: Int,
     navController: NavHostController,
-    viewModel: ComicViewModel
-){
+    viewModel: ComicViewModel,
+    ){
     Row(modifier = Modifier
         .fillMaxWidth()) {
         Image(painter = painterResource(item.coverImage),
@@ -226,8 +262,9 @@ fun ComicCard(
                 color = Color.White,
                 fontSize = titleFontSize,
                 fontWeight = FontWeight.Bold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                maxLines = titleMaxLine,
+                overflow = TextOverflow.Ellipsis,
+                lineHeight = titleLineHeight
             )
             Text(text = item.description,
                 color = Color.White,
@@ -242,7 +279,7 @@ fun ComicCard(
                 Text(text = item.author,
                     color = Color.White,
                     fontSize = authorFontSize,
-                    maxLines = 1,
+                    maxLines = authorMaxLine,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.padding(vertical = 5.dp)
                 )
@@ -251,7 +288,7 @@ fun ComicCard(
                     Text(text = item.genre,
                         color = Color.White,
                         fontSize = genreFontSize,
-                        maxLines = 1,
+                        maxLines = genreMaxLine,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
