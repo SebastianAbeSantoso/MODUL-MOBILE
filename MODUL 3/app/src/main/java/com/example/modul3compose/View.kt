@@ -48,7 +48,8 @@ import androidx.navigation.NavHostController
 fun RecommendationCarousel(
     items: List<Comic>,
     isLandscape: Boolean,
-    navController: NavHostController){
+    navController: NavHostController,
+    viewModel: ComicViewModel){
     val listState = rememberLazyListState()
     val flingBehavior = rememberSnapFlingBehavior(lazyListState = listState)
     val descFontSize =  if (isLandscape) 24.sp else 15.sp
@@ -106,7 +107,8 @@ fun RecommendationCarousel(
                             descMaxLine,
                             authorFontSize,
                             genreFontSize,
-                            navController
+                            navController,
+                            viewModel
                         )
                     }
                 }
@@ -119,7 +121,9 @@ fun RecommendationCarousel(
 fun ComicList(
     item: Comic,
     isLandscape: Boolean,
-    navController: NavHostController){
+    navController: NavHostController,
+    viewModel: ComicViewModel
+){
     val descFontSize =  if (isLandscape) 24.sp else 15.sp
     val descMaxLine = if (isLandscape) 3 else 3
 
@@ -160,7 +164,7 @@ fun ComicList(
             )
 
             Column(modifier = Modifier.fillMaxSize()) {
-                Row(modifier = Modifier.fillMaxSize().weight(1f)) { ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize, navController) }
+                Row(modifier = Modifier.fillMaxSize().weight(1f)) { ComicCard(item, titleFontSize, descFontSize, descMaxLine, authorFontSize, genreFontSize, navController, viewModel) }
 
                 Row(modifier = Modifier.background(Color.Black).fillMaxWidth().weight(0.4f).padding(top = buttonPadding), horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                     Button(onClick = { val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
@@ -170,7 +174,9 @@ fun ComicList(
                         Text(text = "Mangadex", modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
                     }
 
-                    Button(onClick = { navController.navigate("details")
+                    Button(onClick = {
+                        navController.navigate("details")
+                        viewModel.selectComic(item)
                     }, modifier = Modifier.fillMaxSize().weight(1f).padding(horizontal = 10.dp)) {
                         Icon(Icons.Default.Menu, contentDescription = "detail_icon", modifier = Modifier.size(buttonIconSize))
                         Text(text = "Detail", modifier = Modifier.padding(start = 10.dp), fontSize = buttonFontSize)
@@ -190,7 +196,8 @@ fun ComicCard(
     descMaxLine: Int,
     authorFontSize: TextUnit,
     genreFontSize: TextUnit,
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: ComicViewModel
 ){
     Row(modifier = Modifier
         .fillMaxWidth()) {
@@ -198,7 +205,10 @@ fun ComicCard(
             modifier = Modifier
                 .fillMaxWidth(0.4f)
                 .fillMaxHeight()
-                .clickable{navController.navigate("details")}
+                .clickable{
+                    navController.navigate("details")
+                    viewModel.selectComic(item)
+                }
                 .padding(start = 20.dp)
                 .clip(RoundedCornerShape(10)),
             contentScale = ContentScale.Crop,
@@ -207,7 +217,10 @@ fun ComicCard(
         Column(modifier = Modifier
             .fillMaxHeight()
             .fillMaxWidth()
-            .clickable{navController.navigate("details")}
+            .clickable{
+                navController.navigate("details")
+                viewModel.selectComic(item)
+            }
             .padding(10.dp)) {
             Text(text = item.title,
                 color = Color.White,

@@ -1,6 +1,7 @@
 package com.example.modul3compose
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -18,7 +19,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,7 +58,7 @@ fun MainScreen(
                 .padding(innerPadding)
         ) {
             item {
-                RecommendationCarousel(carouselComics, isLandscape, navController)
+                RecommendationCarousel(carouselComics, isLandscape, navController, viewModel)
             }
 
             item {Text(text = "Top Comic",
@@ -66,19 +69,38 @@ fun MainScreen(
             }
 
             items(listComics) {item ->
-                ComicList(item, isLandscape, navController)
+                ComicList(item, isLandscape, navController, viewModel)
             }
         }
     }
 }
 
 @Composable
-fun DetailsScreen(){
+fun DetailsScreen(viewModel: ComicViewModel){
+    val selectedComic by viewModel.selectedComic.collectAsStateWithLifecycle()
+
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) {innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+        selectedComic?.let { comic ->
+            Column(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
+            ) {
+                Text(text = comic.title)
 
+                Image(
+                    painter = painterResource(comic.coverImage),
+                    contentDescription = "",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.fillMaxSize()
+                )
+
+                Text(text = comic.description)
+            }
+        } ?: run {
+            Text("Comic not found")
         }
     }
 }
