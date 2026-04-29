@@ -1,6 +1,9 @@
 package com.example.modul3compose
 
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import android.app.Activity
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -36,7 +39,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 
@@ -146,11 +148,15 @@ fun DetailsScreen(
                     .padding(innerPadding)
                     .fillMaxSize())
                 {
-                    Column(modifier = Modifier.fillMaxWidth().fillMaxHeight(cardHeight)) {ComicCard(comic, titleFontSize, titleMaxLine, titleLineHeight, descFontSize, descMaxLine, authorFontSize, authorMaxLine, genreFontSize, genreMaxLine, navController, viewModel)
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(cardHeight)) {ComicCard(comic, titleFontSize, titleMaxLine, titleLineHeight, descFontSize, descMaxLine, authorFontSize, authorMaxLine, genreFontSize, genreMaxLine, navController, viewModel)
                     }
                     Button(onClick = {
                         navController.popBackStack()
-                    }, modifier = Modifier.fillMaxSize().padding(20.dp), shape = RoundedCornerShape(10.dp)) {
+                    }, modifier = Modifier
+                        .fillMaxSize()
+                        .padding(20.dp), shape = RoundedCornerShape(10.dp)) {
                         Text(text = stringResource(R.string.btn_return), modifier = Modifier.padding(end = 10.dp), fontSize = buttonFontSize, textAlign = TextAlign.Center)
                     }
                 }
@@ -162,46 +168,55 @@ fun DetailsScreen(
 
 @Composable
 fun SettingsScreen(navController: NavHostController) {
-    val currentLocales = AppCompatDelegate.getApplicationLocales()
-    val currentLang = currentLocales[0]?.language ?: "en"
-
+    val currentLang = AppCompatDelegate.getApplicationLocales()[0]?.language ?: "en"
     val newLang = if (currentLang == "en") "id" else "en"
 
-    Scaffold(modifier = Modifier.fillMaxSize()
-    ) {innerPadding ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize()
+    ) { innerPadding ->
 
-        Column(modifier = Modifier
+        Column(
+            modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
-            Arrangement.SpaceEvenly,
-            Alignment.CenterHorizontally) {
-            Text(text = stringResource(R.string.label_change_language),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Text(
+                text = stringResource(R.string.label_change_language),
                 style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(bottom = 20.dp))
+                modifier = Modifier.padding(bottom = 20.dp)
+            )
 
-            Button( onClick = {
-                AppCompatDelegate.setApplicationLocales(
-                    LocaleListCompat.forLanguageTags(newLang)
+            Button(
+                onClick = {
+                    AppCompatDelegate.setApplicationLocales(
+                        LocaleListCompat.forLanguageTags(newLang))
+                },
+                modifier = Modifier
+                    .fillMaxHeight(0.5f)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(10.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.btn_switch_language),
+                    textAlign = TextAlign.Center
                 )
-            }, modifier = Modifier.fillMaxHeight(0.5f)
-                .fillMaxWidth(),
-                shape = RoundedCornerShape(10.dp)) {
-                Text(text = stringResource(R.string.btn_switch_language),
-                    modifier = Modifier.padding(end = 10.dp),
-                    textAlign = TextAlign.Center)
             }
 
-            Button(onClick = {
-                navController.popBackStack()
-            }, modifier = Modifier.fillMaxHeight(0.5f)
-                .fillMaxWidth(), shape = RoundedCornerShape(10.dp)) {
-                Text(text = stringResource(R.string.btn_return),
-                    modifier = Modifier.padding(end = 10.dp),
-                    textAlign = TextAlign.Center)
+            Button(
+                onClick = { navController.popBackStack() },
+                modifier = Modifier
+                    .fillMaxHeight(0.5f)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(10.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.btn_return),
+                    textAlign = TextAlign.Center
+                )
             }
-
         }
     }
-
-
 }

@@ -44,8 +44,6 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import androidx.navigation.NavHostController
-import org.w3c.dom.Text
-
 @Composable
 fun RecommendationCarousel(
     items: List<Comic>,
@@ -55,7 +53,7 @@ fun RecommendationCarousel(
     val listState = rememberLazyListState()
     val flingBehavior = rememberSnapFlingBehavior(lazyListState = listState)
     val descFontSize =  if (isLandscape) 24.sp else 15.sp
-    val descMaxLine = if (isLandscape) 3 else 5
+    val descMaxLine = if (isLandscape) 2 else 5
 
     val titleFontSize = if (isLandscape) 32.sp else 20.sp
     val titleMaxLine = 1
@@ -236,6 +234,9 @@ fun ComicCard(
     navController: NavHostController,
     viewModel: ComicViewModel,
     ){
+    val genresText = item.genres.map { stringResource(it) }.joinToString(", ")
+    val descriptionText = item.description.map { stringResource(it) }.joinToString("\n\n")
+
     Row(modifier = Modifier
         .fillMaxWidth()) {
         Image(painter = painterResource(item.coverImage),
@@ -268,7 +269,7 @@ fun ComicCard(
                 overflow = TextOverflow.Ellipsis,
                 lineHeight = titleLineHeight
             )
-            Text(text = item.description,
+            Text(text = descriptionText,
                 color = Color.White,
                 fontSize = descFontSize,
                 maxLines = descMaxLine,
@@ -287,7 +288,7 @@ fun ComicCard(
                 )
                 Row(modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = item.genre,
+                    Text(text = genresText,
                         color = Color.White,
                         fontSize = genreFontSize,
                         maxLines = genreMaxLine,
@@ -298,3 +299,4 @@ fun ComicCard(
         }
     }
 }
+

@@ -5,8 +5,8 @@ data class Comic (
     val coverImage: Int,
     val backgroundImage: Int,
     val url: String,
-    val description: String,
-    val genre: String,
+    val description: List<Int>,
+    val genres: List<Int>,
     val author: String,
     val id: Int
 )

@@ -1,5 +1,6 @@
 [versions]
 agp = "9.1.1"
+appcompatVersion = "1.7.0"
 coreKtx = "1.18.0"
 hiltAndroid = "2.59.2"
 hiltCompiler = "2.48"
@@ -15,6 +16,7 @@ navigationCompose = "2.9.8"
 appcompat = "1.7.1"
 
 [libraries]
+androidx-appcompat-v170 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
