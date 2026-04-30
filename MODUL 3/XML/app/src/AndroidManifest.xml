@@ -13,8 +13,7 @@
         android:localeConfig="@xml/locales_config">
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:configChanges="keyboard|keyboardHidden">
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

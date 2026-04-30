@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Modul 3 Compose</string>
+    <string name="app_title">ListKomikSaya</string>
+    <string name="cd_settings_menu">Pengaturan</string>
+    <string name="label_top_comic">Komik Terpopuler</string>
+    <string name="cd_bg_image">Gambar latar belakang</string>
+    <string name="btn_return">Kembali</string>
+    <string name="label_change_language">Ganti Bahasa?</string>
+    <string name="btn_switch_language">Tukar Bahasa</string>
+
+    <string name="cd_carousel_bg_image">Gambar latar belakang karosel</string>
+    <string name="label_recommendation">Rekomendasi Saya</string>
+    <string name="cd_mangadex_logo">Logo MangaDex</string>
+    <string name="btn_mangadex">Mangadex</string>
+    <string name="cd_detail_icon">Ikon detail</string>
+    <string name="btn_detail">Detail</string>
+    <string name="cd_cover_image">Gambar sampul komik</string>
+
+    <string name="genre_romance">Romansa</string>
+    <string name="genre_comedy">Komedi</string>
+    <string name="genre_action">Aksi</string>
+    <string name="genre_adventure">Petualangan</string>
+    <string name="genre_transmigration">Transmigrasi</string>
+    <string name="genre_wuxia">Wuxia</string>
+    <string name="genre_reincarnation">Reinkarnasi</string>
+    <string name="genre_time_travel">Penjelajahan Waktu</string>
+    <string name="genre_historical">Sejarah</string>
+    <string name="genre_psychological">Psikologis</string>
+    <string name="genre_tragedy">Tragedi</string>
+    <string name="genre_drama">Drama</string>
+    <string name="genre_school_life">Kehidupan Sekolah</string>
+    <string name="genre_mystery">Misteri</string>
+    <string name="genre_martial_arts">Seni Bela Diri</string>
+    <string name="genre_fantasy">Fantasi</string>
+
+    <string name="please_bully_me_miss_villainess">Aku, Yvonne, bereinkarnasi ke dalam game otome sebagai gadis antagonis yang kaya. Menurut alur cerita game, karakter yang dibenci oleh semua orang sepertiku memiliki peran utama untuk merundung sang pahlawan wanita, mendorongnya menuju berbagai rute romantis para tokoh pria. Tapi sepertinya ada yang salah dengan Elsa, sang pahlawan wanita! Dia menjadi terlalu dekat denganku!</string>
+    <string name="reverend_insanity">Kisah seorang penjahat, Fang Yuan, yang terlahir kembali 500 tahun ke masa lalu dengan Spring Autumn Cicada yang dia sempurnakan dengan susah payah. Dengan kebijaksanaannya yang mendalam, pengalaman pertempuran dan hidup, dia berusaha untuk mengatasi musuh-musuhnya dengan keterampilan dan kecerdasan! Kejam dan tidak bermoral, dia tidak perlu menahan diri saat dia mengejar tujuan utamanya.</string>
+    <string name="sss_class_suicide_hunter">Di Menara misterius yang seperti dungeon RPG, Gongja Kim menjalani kehidupan yang biasa-biasa saja, iri pada semua pemburu bintang. Suatu hari, keinginannya untuk mendapatkan lebih banyak dikabulkan dengan keterampilan legendaris untuk meniru kemampuan orang lain… dengan mengorbankan nyawanya. Sebelum dia bisa memahaminya, dia dibunuh oleh pemburu nomor 1, Flame Emperor! Tapi ini mengaktifkan keterampilannya dan sekarang dia telah meniru yang baru, kemampuan untuk melakukan perjalanan kembali ke masa lalu setelah kematian.</string>
+    <string name="i_got_a_new_skill_every_time_i_was_exiled">Seorang petualang bernama Ed diasingkan dari kelompoknya karena dianggap tidak berguna, tapi alih-alih merasa sedih dan kesal dia malah senang!!? Ternyata bukan tanpa alasan dia merasa senang saat diasingkan dari kelompoknya, karena setiap kali dia diasingkan dia akan menerima keterampilan yang membuatnya semakin tak terkalahkan…</string>
+    <string name="the_greatest_estate_developer">Ketika mahasiswa teknik sipil Suho Kim tertidur saat membaca novel fantasi, dia terbangun sebagai karakter di dalam buku tersebut. Suho sekarang berada di tubuh Lloyd Frontera, seorang bangsawan malas yang suka minum, dan keluarganya terjerat hutang yang menumpuk. Menggunakan pengetahuan tekniknya, Suho merancang penemuan untuk menghindari masa depan mengerikan yang menantinya.</string>
+    <string name="lord_of_the_mysteries">Dengan berkembangnya tenaga uap dan mesin, siapa yang bisa mendekati menjadi Beyonder? Terbungkus dalam kabut sejarah dan kegelapan, siapa atau apa kejahatan tersembunyi yang berbisik ke telinga kita? Bangun untuk menghadapi serangkaian misteri, Zhou Mingrui mendapati dirinya bereinkarnasi sebagai Klein Moretti di dunia era Victoria alternatif di mana dia melihat dunia yang penuh dengan mesin, meriam, dreadnought, kapal udara, mesin perbedaan, serta Ramuan, Ramalan, Kutukan, Kartu Tarot, Artefak Tersegel…</string>
+    <string name="the_summer_you_were_there">Shizuku adalah seorang siswi SMA pemalu yang jarang berbicara dengan orang lain. Sebaliknya, dia menenggelamkan dirinya dalam menulis, menyusun sebuah novel yang tidak pernah dia niatkan untuk diperlihatkan kepada siapa pun. Tapi ketika teman sekelasnya yang lucu dan populer, Kaori, mendapatkan manuskrip Shizuku, segalanya berubah</string>
+    <string name="the_moon_on_a_rainy_night">Suatu malam yang hujan, Saki sedang bergegas ke kursus piano ketika dia menabrak seorang gadis cantik berambut panjang, menjatuhkan lembaran musiknya dalam proses tersebut. Saki gagap meminta maaf, tetapi gadis itu hanya mengembalikan lembaran musiknya dan pergi tanpa sepatah kata pun. Saki memulai hari pertama sekolah menengahnya keesokan paginya, hanya untuk menemukan orang asing dari malam sebelumnya duduk di meja di sebelahnya. Dia mengetahui bahwa nama gadis itu adalah Kanon dan dia tidak sepenuhnya tuli, tetapi mengalami gangguan pendengaran berat. Meskipun Kanon perlu dekat dengan orang-orang untuk membaca bibir mereka, dia cenderung menjauhkan orang-orang dengan sikap dinginnya. Melalui satu gerakan baik hati, Saki perlahan mulai meruntuhkan dinding di sekitar Kanon, bahkan saat dia merasakan sesuatu yang baru mekar di dalam dirinya.</string>
+    <string name="movies_are_real">Saat bekerja sebagai aktor pendukung kecil dalam sebuah film, Ki Man Sung tidak punya hal lain yang mendukungnya. Namun, saat itulah, melalui keadaan misterius, lokasi syuting film telah menjadi kenyataan selama pembuatan film. Saat sutradara meneriakkan "cut", selama pengambilan gambar singkat itu, dia bukan seorang aktor melainkan benar-benar dilemparkan ke dalam peristiwa yang terjadi, menunjukkan rasa sakit dan emosi yang dia hadapi pada saat itu. Dia hanya bisa kembali jika dia menciptakan pengambilan gambar yang sempurna itu…!</string>
+    <string name="legend_of_the_northern_blade">Ketika dunia terjerumus ke dalam kegelapan oleh \'Silent Night\', para seniman bela diri berkumpul untuk membentuk Sekte Surgawi Utara dan memulihkan perdamaian. Bertahun-tahun kemudian, pengkhianatan dari daratan menghancurkan sekte tersebut dan membunuh pemimpinnya, meninggalkan putranya Jin Mu-Won untuk mengungkap teknik-teknik tersembunyi dan memulai perjalanannya sendiri.</string>
+    <string name="return_of_the_mount_hua_sect">Chung Myung, Murid ke-13 Sekte Mount Hua, dan salah satu dari tiga pendekar pedang terhebat, Plum Blossom Sword Saint, mengalahkan Chun Ma, yang telah membawa kehancuran dan kekacauan ke dunia. Setelah pertempuran, dia menghembuskan nafas terakhirnya di puncak gunung markas besar Sekte Iblis Surgawi. Dia terlahir kembali setelah 100 tahun dalam tubuh seorang anak kecil. ……Apa? Sekte Mount Hua telah runtuh? Omong kosong macam apa itu!?</string>
+    <string name="the_one_within_the_villainess">Untuk membersihkan nama \'Emi\', seorang gadis yang telah bereinkarnasi sebagai Remilia, antagonis dari game otome, Remilia yang asli yang telah menonton selama ini dari dalam terbangun.</string>
+    <string name="the_kings_avatar">Tidak ada yang bisa menandingi keterampilan Ye Qiu di Glory, sebuah MMO populer yang menggemparkan dunia. Namun, tim profesionalnya menggantikannya sebagai kapten dan menyita akunnya. Ye Qiu ditinggalkan untuk memulai kembali di warnet sebagai manajer jaringan. Ketika server ke-10 yang baru diluncurkan, dia terjun kembali, berbekal pengalaman selama satu dekade dan senjata kustom yang belum selesai. Jalannya menuju penebusan, penuh dengan strategi dan kenangan, menandai kembalinya dia yang mendebarkan ke puncak.</string>
+    <string name="i_made_friends_with_the_second_prettiest_girl_in_my_class">Aku, Maki Maehara, adalah seorang penyendiri di kelasku. Teman pertamaku adalah Umi Asanagi, gadis yang dipanggil semua orang sebagai \'yang tercantik kedua di kelas\'. Aku pikir orang sepertiku hidup di dunia yang berbeda, tetapi melalui takdir, kami segera mulai nongkrong bersama setiap hari Jumat setelah sekolah.</string>
+</resources>
