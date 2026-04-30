@@ -5,6 +5,8 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.modul3xml.databinding.ActivityMainBinding
@@ -12,16 +14,6 @@ import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-    override fun attachBaseContext(newBase: Context) {
-        val prefs = newBase.getSharedPreferences("settings", Context.MODE_PRIVATE)
-        val lang = prefs.getString("language", "en") ?: "en"
-        val locale = Locale.forLanguageTag(lang)
-        Locale.setDefault(locale)
-        val config = Configuration(newBase.resources.configuration)
-        config.setLocale(locale)
-        super.attachBaseContext(newBase.createConfigurationContext(config))
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

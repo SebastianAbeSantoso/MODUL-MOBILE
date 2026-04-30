@@ -34,8 +34,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val isLandscape =
-            resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
         val navController = findNavController()
 
         binding.toolbar.setOnMenuItemClickListener { menuItem ->

@@ -10,11 +10,16 @@ import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.modul3xml.databinding.FragmentSettingsBinding
+import androidx.core.content.edit
+import androidx.fragment.app.activityViewModels
+import com.example.modul3xml.viewmodel.ComicViewModel
 
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ComicViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,21 +37,14 @@ class SettingsFragment : Fragment() {
 
         binding.btnSwitchLanguage.setOnClickListener {
             val currentLocales = AppCompatDelegate.getApplicationLocales()
-            
             val currentLang = if (!currentLocales.isEmpty) {
-                currentLocales[0]?.language 
+                currentLocales[0]?.language
             } else {
                 java.util.Locale.getDefault().language
             }
 
-            Log.d("LANGUAGE_SWITCH", "Current Lang detected: $currentLang")
-
-            // Toggle logic
             val newLang = if (currentLang == "id" || currentLang == "in") "en" else "id"
-            
-            Log.d("LANGUAGE_SWITCH", "Switching to: $newLang")
 
-            // Apply the new locale
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(newLang))
         }
 

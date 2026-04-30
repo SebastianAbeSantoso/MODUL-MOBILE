@@ -73,8 +73,13 @@ class ComicListAdapter(
 
             val navigate = {
                 viewModel.selectComic(comic)
-                navController.navigate(R.id.action_main_to_details)
+                val currentDest = navController.currentDestination?.id
+
+                if (currentDest == R.id.mainFragment) {
+                    navController.navigate(R.id.action_main_to_details)
+                }
             }
+
             coverImage.setOnClickListener { navigate() }
             infoColumn.setOnClickListener { navigate() }
 

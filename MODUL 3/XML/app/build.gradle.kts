@@ -23,6 +23,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    androidResources{
+        //noinspection MissingResourcesProperties
+        generateLocaleConfig = true
+    }
+
 
     buildTypes {
         release {
