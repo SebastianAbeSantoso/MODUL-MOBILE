@@ -45,8 +45,7 @@ class MainFragment : Fragment() {
 
         val carouselAdapter = CarouselAdapter(isLandscape, viewModel, navController)
         binding.carouselRecyclerView.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = carouselAdapter
             PagerSnapHelper().attachToRecyclerView(this)
         }
