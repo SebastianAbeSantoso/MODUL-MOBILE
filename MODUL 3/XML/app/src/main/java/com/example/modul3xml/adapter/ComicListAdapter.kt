@@ -19,8 +19,7 @@ class ComicListAdapter(
     private val navController: NavController
 ) : ListAdapter<Comic, ComicListAdapter.ViewHolder>(DiffCallback()) {
 
-    class ViewHolder(val binding: ItemComicListBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemComicListBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemComicListBinding.inflate(
