@@ -7,7 +7,6 @@ import com.example.modul3xml.R
 import com.example.modul3xml.model.Comic
 
 class ComicViewModel : ViewModel() {
-
     private val _carouselComics = MutableLiveData<List<Comic>>(emptyList())
     private val _listComics = MutableLiveData<List<Comic>>(emptyList())
     private val _selectedComic = MutableLiveData<Comic?>()
