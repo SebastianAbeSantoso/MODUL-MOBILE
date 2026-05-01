@@ -9,14 +9,10 @@ import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.modul3xml.databinding.FragmentSettingsBinding
-import androidx.fragment.app.activityViewModels
-import com.example.modul3xml.viewmodel.ComicViewModel
 
 class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
-
-    private val viewModel: ComicViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -1,6 +1,5 @@
 package com.example.modul3xml.fragment
 
-import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.modul3xml.databinding.FragmentDetailsBinding
 import com.example.modul3xml.viewmodel.ComicViewModel
-import java.util.Locale
 
 class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
@@ -62,7 +60,7 @@ class DetailsFragment : Fragment() {
             binding.coverImage.setImageResource(comic.coverImage)
 
             binding.titleText.apply {
-                setText(comic.title)
+                text = comic.title
                 textSize = titleFontSize
                 maxLines = titleMaxLines
             }
