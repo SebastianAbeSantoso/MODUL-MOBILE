@@ -17,8 +17,7 @@ class CarouselAdapter(
     private val navController: NavController
 ) : ListAdapter<Comic, CarouselAdapter.ViewHolder>(DiffCallback()) {
 
-    class ViewHolder(val binding: ItemCarouselBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemCarouselBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemCarouselBinding.inflate(
