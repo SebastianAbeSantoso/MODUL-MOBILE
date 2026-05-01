@@ -57,14 +57,11 @@ fun MainScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(stringResource(
-                        R.string.app_title),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.Bold)},
-                actions = {
-                    IconButton(onClick = {navController.navigate("settings") }) {
-                        Icon(
-                            Icons.Default.Menu,
+                    Text(stringResource(R.string.app_title),
+                        style = MaterialTheme.typography.titleLarge
+                    )},
+                actions = { IconButton(onClick = {navController.navigate("settings") }) {
+                        Icon(Icons.Default.Menu,
                             contentDescription = stringResource(R.string.cd_settings_menu))
                     }
                 }
@@ -72,22 +69,19 @@ fun MainScreen(
         }
     ) {innerPadding ->
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)
         ) {
             item {
-                RecommendationCarousel(
-                    carouselComics,
+                RecommendationCarousel(carouselComics,
                     isLandscape,
                     navController,
                     viewModel)
             }
 
             item {
-                Text(
-                text = stringResource(R.string.label_top_comic),
+                Text(text = stringResource(R.string.label_top_comic),
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 25.sp,
                 modifier = Modifier.padding(top = 30.dp, bottom = 5.dp, start = 20.dp)
@@ -152,8 +146,7 @@ fun DetailsScreen(
                         .fillMaxWidth()
                         .fillMaxHeight(cardHeight)) {ComicCard(comic, titleFontSize, titleMaxLine, titleLineHeight, descFontSize, descMaxLine, authorFontSize, authorMaxLine, genreFontSize, genreMaxLine, navController, viewModel)
                     }
-                    Button(onClick = {
-                        navController.popBackStack()
+                    Button(onClick = { navController.popBackStack()
                     }, modifier = Modifier
                         .fillMaxSize()
                         .padding(20.dp), shape = RoundedCornerShape(10.dp)) {
@@ -175,22 +168,19 @@ fun SettingsScreen(navController: NavHostController) {
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
 
-        Column(
-            modifier = Modifier
+        Column(modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Text(
-                text = stringResource(R.string.label_change_language),
+            Text(text = stringResource(R.string.label_change_language),
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.padding(bottom = 20.dp)
             )
 
-            Button(
-                onClick = {
+            Button(onClick = {
                     AppCompatDelegate.setApplicationLocales(
                         LocaleListCompat.forLanguageTags(newLang))
                 },
@@ -199,21 +189,18 @@ fun SettingsScreen(navController: NavHostController) {
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp)
             ) {
-                Text(
-                    text = stringResource(R.string.btn_switch_language),
+                Text(text = stringResource(R.string.btn_switch_language),
                     textAlign = TextAlign.Center
                 )
             }
 
-            Button(
-                onClick = { navController.popBackStack() },
+            Button(onClick = { navController.popBackStack() },
                 modifier = Modifier
                     .fillMaxHeight(0.5f)
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(10.dp)
             ) {
-                Text(
-                    text = stringResource(R.string.btn_return),
+                Text(text = stringResource(R.string.btn_return),
                     textAlign = TextAlign.Center
                 )
             }

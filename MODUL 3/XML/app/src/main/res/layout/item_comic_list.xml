@@ -109,9 +109,10 @@
                 android:orientation="horizontal"
                 android:background="@android:color/black"
                 android:paddingTop="8dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="4dp">
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="8dp">
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnMangadex"
@@ -120,7 +121,7 @@
                     android:layout_weight="1"
                     android:layout_marginEnd="10dp"
                     android:text="@string/btn_mangadex"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     app:backgroundTint="#FFFF9800"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/mangadex_logo"
@@ -134,7 +135,9 @@
                     android:layout_weight="1"
                     android:layout_marginStart="10dp"
                     android:text="@string/btn_detail"
-                    android:textColor="@android:color/white"
+                    android:padding="8dp"
+                    android:textColor="@android:color/black"
+                    app:backgroundTint="#b9c5ed"
                     app:cornerRadius="10dp"
                     app:icon="@drawable/ic_menu_24"
                     app:iconGravity="textStart" />
