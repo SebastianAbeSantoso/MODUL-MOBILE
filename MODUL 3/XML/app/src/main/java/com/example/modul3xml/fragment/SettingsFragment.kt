@@ -13,7 +13,6 @@ import androidx.fragment.app.activityViewModels
 import com.example.modul3xml.viewmodel.ComicViewModel
 
 class SettingsFragment : Fragment() {
-
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
