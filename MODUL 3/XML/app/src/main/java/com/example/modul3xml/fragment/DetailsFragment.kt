@@ -14,7 +14,6 @@ import com.example.modul3xml.viewmodel.ComicViewModel
 import java.util.Locale
 
 class DetailsFragment : Fragment() {
-
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ComicViewModel by activityViewModels()
