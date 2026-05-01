@@ -17,7 +17,6 @@ import com.example.modul3xml.databinding.FragmentMainBinding
 import com.example.modul3xml.viewmodel.ComicViewModel
 
 class MainFragment : Fragment() {
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ComicViewModel by activityViewModels()
