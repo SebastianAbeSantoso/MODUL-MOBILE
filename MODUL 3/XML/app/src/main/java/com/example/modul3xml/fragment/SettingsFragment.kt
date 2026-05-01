@@ -1,7 +1,6 @@
 package com.example.modul3xml.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.modul3xml.databinding.FragmentSettingsBinding
-import androidx.core.content.edit
 import androidx.fragment.app.activityViewModels
 import com.example.modul3xml.viewmodel.ComicViewModel
 

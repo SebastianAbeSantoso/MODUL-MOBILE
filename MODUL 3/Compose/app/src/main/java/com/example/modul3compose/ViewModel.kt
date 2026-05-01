@@ -102,7 +102,7 @@ class ComicViewModel: ViewModel() {
                 listOf(R.string.movies_are_real),
                 listOf(R.string.genre_action, R.string.genre_psychological, R.string.genre_mystery),
                 "Jaemihalgi (재미핥기), Toon Plus (주)툰플러스, AinJam (아인잠)",
-                0),
+                9),
             Comic(
                 "Legend of The Northern Blade",
                 R.drawable.cv_li_3,
