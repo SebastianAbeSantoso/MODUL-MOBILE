@@ -6,6 +6,7 @@ import com.example.modul4xml.repository.ComicRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import timber.log.Timber
 import kotlin.collections.emptyList
 
 class ComicViewModel(
@@ -21,11 +22,15 @@ class ComicViewModel(
     val selectedComic: StateFlow<Comic?> = _selectedComic.asStateFlow()
 
     fun selectComic(comic: Comic) {
+        Timber.d("Comic dipilih: $comic ")
         _selectedComic.value = comic
     }
 
     init {
-        _carouselComics.value = repo.getCarouselComics()
         _listComics.value = repo.getListComics()
+        Timber.d("Data item masuk ke dalam list ${_listComics.value}")
+
+        _carouselComics.value = repo.getCarouselComics()
+        Timber.d("Data item masuk ke dalam list ${_carouselComics.value}")
     }
 }

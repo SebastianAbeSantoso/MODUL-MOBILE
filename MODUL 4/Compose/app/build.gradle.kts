@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.timber)
     implementation(libs.androidx.appcompat.v170)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
