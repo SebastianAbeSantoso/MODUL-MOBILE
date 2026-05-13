@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Modul 3 XML"
+rootProject.name = "Modul 4 XML"
 include(":app")
  

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.modul3compose"
+    namespace = "com.example.modul4compose"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1

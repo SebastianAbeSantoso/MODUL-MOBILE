@@ -7,7 +7,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.example.modul3xml"
+    namespace = "com.example.modul4xml"
     compileSdk = 36
 
     defaultConfig {

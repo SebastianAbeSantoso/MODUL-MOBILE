@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Modul 3 Compose</string>
+    <string name="app_name">Modul 4 Compose</string>
     <string name="app_title">ListKomikSaya</string>
     <string name="cd_settings_menu">Pengaturan</string>
     <string name="label_top_comic">Komik Terpopuler</string>

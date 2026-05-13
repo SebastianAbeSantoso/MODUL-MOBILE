@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Modul 3 Compose"
+rootProject.name = "Modul 4 Compose"
 include(":app")
  
