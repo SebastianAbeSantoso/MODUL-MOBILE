@@ -27,7 +27,7 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: ComicViewModel by activityViewModels {
         ComicViewModelFactory(
-            appName = "Modul 3 XML",
+            appName = "MyComicList",
             repository = ComicRepository()
         )
     }
